@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "34898956141",
+    "firebase_url": "https://aty-client.firebaseio.com",
+    "project_id": "aty-client",
+    "storage_bucket": "aty-client.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34898956141:android:280809cbae47f427",
+        "android_client_info": {
+          "package_name": "com.acc.study_control"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34898956141-paqvobvaspcl9abqbcdp370295seck2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0Ym37eHLBNqmODThpiUMaev8US5-LV8M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

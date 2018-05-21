@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "631963440563",
+    "firebase_url": "https://fir-prueba-a7821.firebaseio.com",
+    "project_id": "fir-prueba-a7821",
+    "storage_bucket": "fir-prueba-a7821.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:631963440563:android:479cdb7b945f5e1c",
+        "android_client_info": {
+          "package_name": "com.acc.study_control"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "631963440563-vmp4u7ksr6po5e65fdfs2ask05iu8d09.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiIxCZfOjgOVDsmQDcghd8fHUoL26Mfj0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

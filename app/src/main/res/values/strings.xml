@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">Control de Estudio</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!--Main Dashboard-->
+    <string name="request_trip_button">Pedir Móvil</string>
+
+    <!--Login-->
+    <string name="welcome_message">Control \nEstudio Bíblico</string>
+    <string name="welcome_description">Trabajamos Junto\nIASD MOB</string>
+    <string name="enter_button">Ingresar</string>
+    <string name="wizard_title">Registro de Datos</string>
+    <string name="wizard_name_input">Nombre</string>
+    <string name="wizard_email_input">Correo</string>
+    <string name="wizard_phone_input">Teléfono</string>
+    <string name="wizard_register_button">Registrar</string>
+
+    <!--Facebook Keys-->
+
+    <string name="facebook_application_id">229986297581130</string>
+    <!--<string name="facebook_login_protocol_scheme">fb229986297581130</string>-->
+    <string name="facebook_login_protocol_scheme">1b68b78f770cfe5128c0a299e793ccec</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sort_ascending">Sort Ascending</string>
+    <string name="sort_descending">Sort Descending</string>
+    <string name="clear_sorting">Clear</string>
+    <string name="hiding_row_sample">Hiding 3. Row Sample</string>
+    <string name="showing_row_sample">Showing 3. Row Sample</string>
+    <string name="scroll_to_column_position">Scroll to 15. column position</string>
+    <string name="scroll_to_row_position">Scroll to 5. row position</string>
+    <string name="show_hide_the_column">Showing / Hiding 1. column</string>
+    <string name="table_pagination_details">Page %s, showing items %s - %s.</string>
+    <string-array name="moods">
+        <item></item>
+        <item>Happy</item>
+        <item>Sad</item>
+    </string-array>
+    <string-array name="gender">
+        <item></item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="items_per_page">
+        <item>10</item>
+        <item>20</item>
+        <item>25</item>
+        <item>50</item>
+        <item>All</item>
+    </string-array>
+
+
+</resources>
