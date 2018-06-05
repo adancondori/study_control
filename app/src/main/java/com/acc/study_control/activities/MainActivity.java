@@ -1,5 +1,6 @@
 package com.acc.study_control.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity
         CodeFragment.OnFragmentInteractionListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-
+    public DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +50,12 @@ public class MainActivity extends AppCompatActivity
         // Request Permissions
         RequestPermissionsUtil.INSTANCE.requestPermissions(this);
 
-
-        if (savedInstanceState == null) {
+        Code code = Code.first(Code.class);
+        if (savedInstanceState == null && code == null) {
             getSupportFragmentManager().beginTransaction().add(R.id.activity_container,
-                    CodeFragment.newInstance("test_1", "test_2"), MemberFragment.class.getSimpleName()).commit();
+                    CodeFragment.newInstance("test_1", "test_2"), CodeFragment.class.getSimpleName()).commit();
+        } else {
+            changeFragment(code);
         }
         // Load Map
         //loadDashboardMap();
@@ -69,10 +73,10 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+                this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -81,11 +85,12 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            finalizarActivity_Dialog();
         }
     }
 
@@ -147,8 +152,46 @@ public class MainActivity extends AppCompatActivity
     public void changeFragment(Code code) {
         MainFragment mainFragment = new MainFragment();
         mainFragment.getCode(code);
-        getSupportFragmentManager().beginTransaction().add(R.id.activity_container,
-                mainFragment, "main_fragment").commit();
+//        getSupportFragmentManager().beginTransaction().add(R.id.activity_container,
+//                mainFragment, "main_fragment").commit();
+        // Begin the transaction
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        // Replace the contents of the container with the new fragment
+        ft.replace(R.id.activity_container, mainFragment);
+        // or ft.add(R.id.your_placeholder, new FooFragment());
+        // Complete the changes added above
+        ft.commit();
 
+    }
+
+    public void changeFragmentMember() {
+        // Begin the transaction
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        // Replace the contents of the container with the new fragment
+        ft.replace(R.id.activity_container, MemberFragment.newInstance());
+        // or ft.add(R.id.your_placeholder, new FooFragment());
+        // Complete the changes added above
+        ft.commit();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    public void finalizarActivity_Dialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_Dialog_Salir);
+        builder.setMessage("¿Desea salir De Control de Estudio?");
+        builder.setCancelable(true);
+        builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

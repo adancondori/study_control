@@ -33,4 +33,16 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
+    <style name="Theme_Dialog_Salir" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">#D32F2F</item>
+
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">#FFFFFF</item>
+
+        <!-- Used for the background -->
+        <item name="android:background">#00BCD4</item>
+    </style>
+
+
 </resources>

@@ -39,10 +39,16 @@ public class TableViewListener implements ITableViewListener {
     private Toast mToast;
     private Context mContext;
     private TableView mTableView;
+    private MyCellClick myCellClick = null;
 
-    public TableViewListener(TableView tableView) {
+    public interface MyCellClick {
+        public void cellClick(int row, int col);
+    }
+
+    public TableViewListener(TableView tableView, MyCellClick myCellClick) {
         this.mContext = tableView.getContext();
         this.mTableView = tableView;
+        this.myCellClick = myCellClick;
     }
 
     /**
@@ -56,8 +62,8 @@ public class TableViewListener implements ITableViewListener {
     public void onCellClicked(@NonNull RecyclerView.ViewHolder cellView, int column, int row) {
 
         // Do what you want.
-        showToast("Cell " + column + " " + row + " has been clicked.");
-
+        //showToast("Cell " + column + " " + row + " has been clicked.");
+        myCellClick.cellClick(row, column);
     }
 
     /**
@@ -71,7 +77,7 @@ public class TableViewListener implements ITableViewListener {
     public void onCellLongPressed(@NonNull RecyclerView.ViewHolder cellView, final int column,
                                   int row) {
         // Do What you want
-        showToast("Cell " + column + " " + row + " has been long pressed.");
+        //showToast("Cell " + column + " " + row + " has been long pressed.");
     }
 
     /**
@@ -84,7 +90,7 @@ public class TableViewListener implements ITableViewListener {
     public void onColumnHeaderClicked(@NonNull RecyclerView.ViewHolder columnHeaderView, int
             column) {
         // Do what you want.
-        showToast("Column header  " + column + " has been clicked.");
+        //showToast("Column header  " + column + " has been clicked.");
     }
 
     /**

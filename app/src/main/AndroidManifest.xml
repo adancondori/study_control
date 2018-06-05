@@ -22,7 +22,7 @@
             android:value="@string/google_maps_key" />
         <meta-data
             android:name="DATABASE"
-            android:value="aty_client.db" />
+            android:value="study_control.db" />
         <meta-data
             android:name="VERSION"
             android:value="1" />

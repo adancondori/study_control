@@ -18,32 +18,32 @@
 
         <FrameLayout
             android:id="@+id/activity_container"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="com.google.android.gms.maps.SupportMapFragment" />
+            android:layout_height="match_parent" />
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <mehdi.sakout.fancybuttons.FancyButton
                 android:id="@+id/request_trip_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
                 android:layout_marginBottom="10dp"
-                android:layout_marginRight="24dp"
                 android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
                 fancy:fb_defaultColor="@color/colorAccent"
                 fancy:fb_fontIconResource="&#xf1b9;"
                 fancy:fb_iconPosition="left"
                 fancy:fb_radius="24dp"
                 fancy:fb_text="@string/request_trip_button"
-                fancy:fb_textSize="24dp"/>
+                fancy:fb_textSize="24dp" />
 
         </RelativeLayout>
 

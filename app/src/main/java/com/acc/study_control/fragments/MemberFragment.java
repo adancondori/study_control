@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.acc.study_control.R;
+import com.acc.study_control.models.Code;
 import com.acc.study_control.models.Member;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,12 +34,11 @@ import com.google.firebase.firestore.SetOptions;
 public class MemberFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_CODE = "";
+    private static final String ARG_CODE_ID = "";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private Code code;
 
     private OnFragmentInteractionListener mListener;
 
@@ -61,16 +61,12 @@ public class MemberFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment MemberFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MemberFragment newInstance(String param1, String param2) {
+    public static MemberFragment newInstance() {
         MemberFragment fragment = new MemberFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -78,10 +74,11 @@ public class MemberFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+//        }
+        code = Code.first(Code.class);
     }
 
     @Override
@@ -179,7 +176,13 @@ public class MemberFragment extends Fragment {
     }
 
     private void addDocumentToCollection(Member member) {
-        firestoreDB.collection("events")
+        firestoreDB.collection("districts")
+                .document(code.district_id)
+                .collection("churches")
+                .document(code.chruch_id)
+                .collection("small_group")
+                .document(code.group_id)
+                .collection("members")
                 .add(member)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -204,7 +207,13 @@ public class MemberFragment extends Fragment {
     }
 
     private void updateDocumentToCollection(Member member) {
-        firestoreDB.collection("events")
+        firestoreDB.collection("districts")
+                .document(code.district_id)
+                .collection("churches")
+                .document(code.chruch_id)
+                .collection("small_group")
+                .document(code.group_id)
+                .collection("members")
                 .document(docId)
                 .set(member, SetOptions.merge())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

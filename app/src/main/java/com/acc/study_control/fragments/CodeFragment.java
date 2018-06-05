@@ -166,7 +166,10 @@ public class CodeFragment extends Fragment {
         }
         if (sw) {
             Log.e("CODE", "ENTRO OKOK");
+            Code.deleteAll(Code.class);
+            _code.save();
             ((MainActivity) getActivity()).changeFragment(_code);
+
         } else {
             Log.e("CODE", "ENTRO no no");
         }
