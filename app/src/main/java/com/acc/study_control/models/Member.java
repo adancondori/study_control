@@ -5,11 +5,13 @@ package com.acc.study_control.models;
  */
 
 public class Member {
-    public String name;
     public String ap_materno;
     public String ap_paterno;
+    public String baptism_date;
     public String birthday;
+    public String cell_phone;
     public String ci;
+    public String name;
     public String id;
     public boolean is_one;
     public boolean is_two;
@@ -31,5 +33,4 @@ public class Member {
     public boolean is_eigthten;
     public boolean is_nineteen;
     public boolean is_twenty;
-    public String baptism_date;
 }

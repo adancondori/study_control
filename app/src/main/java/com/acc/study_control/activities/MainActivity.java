@@ -1,5 +1,7 @@
 package com.acc.study_control.activities;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -15,13 +17,16 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.acc.study_control.fragments.CodeFragment;
 import com.acc.study_control.fragments.ItemListDialogFragment;
 import com.acc.study_control.fragments.MainFragment;
 import com.acc.study_control.fragments.MemberFragment;
 import com.acc.study_control.models.Code;
+import com.acc.study_control.utils.Utils;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity
 
     private static final String TAG = MainActivity.class.getSimpleName();
     public DrawerLayout mDrawerLayout;
+    public ProgressDialog progress = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +61,7 @@ public class MainActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().add(R.id.activity_container,
                     CodeFragment.newInstance("test_1", "test_2"), CodeFragment.class.getSimpleName()).commit();
         } else {
-            changeFragment(code);
+            changeFragment();
         }
         // Load Map
         //loadDashboardMap();
@@ -85,9 +91,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-            mDrawerLayout.closeDrawer(GravityCompat.START);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
         } else {
             //super.onBackPressed();
             finalizarActivity_Dialog();
@@ -99,21 +105,19 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
+        if (id == R.id.nav_add_member) {
+            changeFragmentMember();
+        } else if (id == R.id.nav_members) {
+            changeFragment();
+        } else if (id == R.id.nav_about) {
+            showAbout();
+        } else if (id == R.id.nav_share_app) {
+            ShareApp();
         } else if (id == R.id.nav_logout) {
             // LogOut Account
             logoutAccount();
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -128,11 +132,10 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         // TODO: Delete from User database
-                        Log.d(TAG, "Logout Successful!");
-
                         // Clean User
                         User.cleanUser();
                         redirectLogin();
+                        Utils.INSTANCE.cleanDataBase(MainActivity.this);
                     }
                 });
     }
@@ -149,7 +152,8 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    public void changeFragment(Code code) {
+    public void changeFragment() {
+        Code code = Code.first(Code.class);
         MainFragment mainFragment = new MainFragment();
         mainFragment.getCode(code);
 //        getSupportFragmentManager().beginTransaction().add(R.id.activity_container,
@@ -193,5 +197,39 @@ public class MainActivity extends AppCompatActivity
         });
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    public void ShareApp() {
+        String shareBody = "Proceso en desarrollo, no yet, excuse!!!. \n send email to adan.condoric@gmail.com.";
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Control de Estudio");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Control de Estudio"));
+    }
+
+
+    public void showAbout() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // builder.setTitle("Acerca de");
+        // builder.setIcon(android.R.drawable.ic_menu_more);
+        // Set up the input
+        LayoutInflater li = LayoutInflater.from(getApplicationContext());
+        View promptsView = li.inflate(R.layout.about_app, null);
+        builder.setView(promptsView);
+
+
+        builder.show();
+    }
+
+
+    public void showSpinner(Context context, boolean show, String text) {
+        if (show) {
+            progress = new ProgressDialog(context);
+            progress.setMessage(text);
+            progress.setCancelable(false);
+            progress.show();
+        } else if (progress != null)
+            progress.dismiss();
     }
 }

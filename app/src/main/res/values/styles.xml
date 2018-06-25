@@ -35,13 +35,24 @@
 
     <style name="Theme_Dialog_Salir" parent="Theme.AppCompat.Light.Dialog.Alert">
         <!-- Used for the buttons -->
-        <item name="colorAccent">#D32F2F</item>
+        <item name="colorAccent">@color/header_line_color</item>
 
         <!-- Used for the title and text -->
         <item name="android:textColorPrimary">#FFFFFF</item>
 
         <!-- Used for the background -->
-        <item name="android:background">#00BCD4</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="Theme_Dialog_Cancel" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/colorPrimary</item>
+
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">#FFFFFF</item>
+
+        <!-- Used for the background -->
+        <item name="android:background">@color/header_line_color</item>
     </style>
 
 

@@ -1,0 +1,154 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="6dp"
+    android:paddingTop="6dp"
+    tools:context=".activities.MainActivity">
+
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_logo_imagen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:contentDescription="ok"
+                    android:src="@drawable/launcher_icon" />
+
+                <ImageView
+                    android:id="@+id/iv_logo_iasd"
+                    android:layout_width="70dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:contentDescription="ok"
+                    android:src="@drawable/logo_iasd" />
+
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textviglesia"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center_horizontal"
+                    android:text="Iglesia Adventista del Séptimo Día"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textvCant"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center_horizontal"
+                    android:text="MISIÓN DEL ORIENTE BOLIVIANO"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:text="2018 - Control de Estudios"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dip"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:id="@+id/texto"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_horizontal"
+                    android:text="Control de Estudio. \nCreative Commons."
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/wwwtitle1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:text="by  adan.condoric@gmail.com"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/wwwtitle2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:text="by  gilmarteologia@gmail.com"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+
+                <!-- <TextView -->
+                <!-- android:id="@+id/politicas" -->
+                <!-- android:layout_width="match_parent" -->
+                <!-- android:layout_height="wrap_content" -->
+                <!-- android:layout_marginTop="10dp" -->
+                <!-- android:gravity="center_horizontal" -->
+                <!-- android:text="@string/title_politicas" -->
+                <!-- android:textAppearance="?android:attr/textAppearanceLarge" -->
+                <!-- android:textColor="@android:color/black" -->
+                <!-- android:textSize="14sp" /> -->
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

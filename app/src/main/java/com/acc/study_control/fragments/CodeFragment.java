@@ -103,6 +103,7 @@ public class CodeFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((MainActivity) getActivity()).showSpinner(getActivity(), true, "Enviando datos...");
                 validateCode();
             }
         });
@@ -164,12 +165,12 @@ public class CodeFragment extends Fragment {
                 break;
             }
         }
+        ((MainActivity) getActivity()).showSpinner(getActivity(), false, "Enviando datos...");
         if (sw) {
-            Log.e("CODE", "ENTRO OKOK");
+            Log.e("CODE", "ENTRO OK");
             Code.deleteAll(Code.class);
             _code.save();
-            ((MainActivity) getActivity()).changeFragment(_code);
-
+            ((MainActivity) getActivity()).changeFragment();
         } else {
             Log.e("CODE", "ENTRO no no");
         }

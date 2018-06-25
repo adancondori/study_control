@@ -91,6 +91,8 @@ public class MainFragment extends Fragment implements TableViewListener.MyCellCl
 
         firestoreDB = FirebaseFirestore.getInstance();
 
+        code = Code.first(Code.class);
+
         getDocumentsFromCollection();
 
         searchField = layout.findViewById(R.id.query_string);
@@ -350,13 +352,13 @@ public class MainFragment extends Fragment implements TableViewListener.MyCellCl
     };
 
     private void getDocumentsFromCollection() {
-        String cad = "districts/" + code.district_id + "/churches/" + code.chruch_id + "/small_group/" + code.group_id + "/members";
+        String cad = "districts/" + code.district_id + "/churches/" + code.church_id + "/small_group/" + code.group_id + "/members";
         //db.collection("app").document("users").collection(uid).document("notifications")
 
         firestoreDB.collection("districts")
                 .document(code.district_id)
                 .collection("churches")
-                .document(code.chruch_id)
+                .document(code.church_id)
                 .collection("small_group")
                 .document(code.group_id)
                 .collection("members")
@@ -384,7 +386,7 @@ public class MainFragment extends Fragment implements TableViewListener.MyCellCl
         firestoreDB.collection("districts")
                 .document(code.district_id)
                 .collection("churches")
-                .document(code.chruch_id)
+                .document(code.church_id)
                 .collection("small_group")
                 .document(code.group_id)
                 .collection("members")
@@ -406,7 +408,7 @@ public class MainFragment extends Fragment implements TableViewListener.MyCellCl
     }
 
     public void addMember() {
-        Toast.makeText(getContext(), "ADD MENBER", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), "ADD MENBER", Toast.LENGTH_LONG).show();
         ((MainActivity) getActivity()).changeFragmentMember();
 
     }
@@ -427,10 +429,11 @@ public class MainFragment extends Fragment implements TableViewListener.MyCellCl
         final boolean state = updateMemberLesson(member, col, true);
         if (state) { // se cambia en estado de
             message = "Esta seguro de DESMARCAR como lección finalizado?";
+            builder = new AlertDialog.Builder(getContext(), R.style.Theme_Dialog_Cancel);
         } else {
+            builder = new AlertDialog.Builder(getContext(), R.style.Theme_Dialog_Salir);
             message = "Esta seguro de MARCAR como lección finalizado?";
         }
-        builder = new AlertDialog.Builder(getContext(), android.R.style.Theme_Material_Dialog_Alert);
         builder.setTitle("Información")
                 .setMessage(message)
                 .setCancelable(false)
@@ -459,7 +462,7 @@ public class MainFragment extends Fragment implements TableViewListener.MyCellCl
         firestoreDB.collection("districts")
                 .document(code.district_id)
                 .collection("churches")
-                .document(code.chruch_id)
+                .document(code.church_id)
                 .collection("small_group")
                 .document(code.group_id)
                 .collection("members")

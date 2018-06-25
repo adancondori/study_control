@@ -13,7 +13,7 @@ public class Code extends SugarRecord implements Serializable {
     public String code;
     public String url;
     public String district_id;
-    public String chruch_id;
+    public String church_id;
     public String group_id;
 
     public Code() {
